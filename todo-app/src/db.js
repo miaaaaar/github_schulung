@@ -4,7 +4,8 @@ import { LocalStorage } from 'lowdb/browser'
 const defaultData = {
     todos: [
       'Julian und Eddi einen Kaffee bringen',
-      'Bewertung dalassen'
+      'Bewertung dalassen',
+      ''
     ]
   };
 

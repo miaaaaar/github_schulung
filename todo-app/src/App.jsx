@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { db } from './db';
 import './App.css'
 
@@ -8,6 +8,23 @@ function App() {
     return db.data.todos;
   });
   const [input, setInput] = useState('');
+  const[catFact, setCatFact] = useState();
+
+  useEffect(()=>{
+
+   async function getDogFact(){
+    const response = await fetch("https://catfact.ninja/fact");
+    const responseJson = await response.json()
+    const catFact = responseJson.fact;
+    setCatFact(catFact)
+  }
+
+  //Url für 3. Aufgabe
+
+  
+  getDogFact()
+  },[])
+
 
   const handleInputChange = (e) => {
     setInput(e.target.value);
@@ -23,7 +40,7 @@ function App() {
 
   const deleteTodo = (index) => {
     const newTodos = todos.filter((_, i) => i !== index);
-    db.data.todos.splice(index, 1); // ToDo entfernen basierend auf dem Index
+    db.data.todos.splice(index, 1); 
     db.write();
     setTodos(newTodos);
   };
@@ -32,6 +49,7 @@ function App() {
       <div>
       <h1>ToDo App</h1>
       <div>
+        {catFact}
         <input
           type="text"
           value={input}
@@ -43,8 +61,10 @@ function App() {
       <ul>
       {todos.map((todo, index) => (
           <li key={index}>
-            {todo}
+            <div className='container'>
+            {todo} {/*Syntax in React um Variablen anzuzeigen, könnte interessant für Aufgabe 2 sein....*/}
             <button className="button" onClick={() => deleteTodo(index)}>Delete</button>
+            </div>
           </li>
         ))}
       </ul>
