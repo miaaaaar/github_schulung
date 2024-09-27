@@ -14,6 +14,7 @@ function App() {
   useEffect(() => {
 
     async function getCatFact() {
+      //timeout useeffect rerender
       const response = await fetch("https://catfact.ninja/fact");
       const responseJson = await response.json();
       const catFactJson = responseJson.fact;
