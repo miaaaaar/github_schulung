@@ -67,10 +67,10 @@ ul {
 
 ul li {
   padding: 10px;
-  margin-bottom: 10px;      /* Abstand zwischen den Listenelementen */
-  border-radius: 5px;       /* Abgerundete Ecken für Listenelemente */
+  margin-bottom: 10px;
+  border-radius: 5px;
 }
 
 ul li:last-child {
-  margin-bottom: 0;         /* Entfernt unteren Rand des letzten Elements */
+  margin-bottom: 0;
 }
