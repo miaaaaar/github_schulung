@@ -10,13 +10,13 @@ function App() {
   const [input, setInput] = useState("");
   const hasFetched = useRef(false)
   // eslint-disable-next-line no-unused-vars
-  const [catFact, setCatFact] = useState(); //Hinweis: für Aufgabe 3 auch extra nochmal benötigt
+  const [catFact, setCatFact] = useState();
+  //const [dogFact, setDogFact] = useState();  //Hinweis: für Aufgabe 3 benötigt
 
   useEffect(() => {
     if (!hasFetched.current) {
 
       async function getCatFact() {
-        //timeout useeffect rerender
         const response = await fetch("https://catfact.ninja/fact");
         const responseJson = await response.json();
         const catFactJson = responseJson.fact;
@@ -24,9 +24,9 @@ function App() {
       }
 
       async function getDogFact() {
-        //Aufgabe 3
+        //Aufgabe 3, an getCatFact orientieren
         //https://dogapi.dog/api/v2/facts
-        // JSON Struktur: response.data[0].attributes.body
+        // JSON Struktur: responseVariable.data[0].attributes.body
       }
 
       getCatFact();
