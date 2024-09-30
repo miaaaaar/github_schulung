@@ -26,7 +26,7 @@ function App() {
       async function getDogFact() {
         //Aufgabe 3, an getCatFact orientieren
         //https://dogapi.dog/api/v2/facts
-        // JSON Struktur: responseVariable.data[0].attributes.body
+        // JSON Struktur: responseJsonVariable.data[0].attributes.body
       }
 
       getCatFact();
