@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { db } from "./db";
 import "./App.css";
 
@@ -8,27 +8,31 @@ function App() {
     return db.data.todos;
   });
   const [input, setInput] = useState("");
+  const hasFetched = useRef(false)
   // eslint-disable-next-line no-unused-vars
   const [catFact, setCatFact] = useState(); //Hinweis: für Aufgabe 3 auch extra nochmal benötigt
 
   useEffect(() => {
+    if (!hasFetched.current) {
 
-    async function getCatFact() {
-      //timeout useeffect rerender
-      const response = await fetch("https://catfact.ninja/fact");
-      const responseJson = await response.json();
-      const catFactJson = responseJson.fact;
-      setCatFact(catFactJson);
-    }
+      async function getCatFact() {
+        //timeout useeffect rerender
+        const response = await fetch("https://catfact.ninja/fact");
+        const responseJson = await response.json();
+        const catFactJson = responseJson.fact;
+        setCatFact(catFactJson);
+      }
 
-    async function getDogFact(){
-      //Aufgabe 3
-      //https://dogapi.dog/api/v2/facts
-      // JSON Struktur: response.data[0].attributes.body
+      async function getDogFact() {
+        //Aufgabe 3
+        //https://dogapi.dog/api/v2/facts
+        // JSON Struktur: response.data[0].attributes.body
+      }
+
+      getCatFact();
+      getDogFact();
+      hasFetched.current = true;
     }
-    
-    getCatFact();
-    getDogFact();
   }, []);
 
   const handleInputChange = (e) => {
@@ -77,7 +81,7 @@ function App() {
           </ul>
         </div>
 
-      {/*<div className="catFactContainer">
+        {/*<div className="catFactContainer">
         Aufgabe 2
         </div>*/}
       </div>
