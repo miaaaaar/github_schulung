@@ -5,7 +5,7 @@ const defaultData = {
     todos: [
       'Julian und Eddi einen Kaffee bringen',
       'Bewertung dalassen',
-      ''
+      'Nächste Woche Kuchen mitnehmen'
     ]
   };
 
