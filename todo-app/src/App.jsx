@@ -72,7 +72,7 @@ function App() {
             {todos.map((todo, index) => (
               <li key={index}>
                 <div className="tableContainer">
-                  {todo}{" "} {/*Syntax in React um Variablen anzuzeigen, könnte interessant für Aufgabe 2 sein....*/}
+                  {todo}{" catFact "} {/*Syntax in React um Variablen anzuzeigen, könnte interessant für Aufgabe 2 sein....*/}
                   <button onClick={() => deleteTodo(index)}>Delete</button>
                 </div>
               </li>
@@ -80,7 +80,7 @@ function App() {
           </ul>
         </div>
 
-        {/*<div className="catFactContainer">
+        {<div className="catFactContainer">
         Aufgabe 2
         </div>*/}
       </div>
